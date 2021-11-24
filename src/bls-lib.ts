@@ -1,3 +1,3 @@
-import { BlsLib } from './BlsLib.js';
+import { BlsLib } from './components/BlsLib.js';
 
 window.customElements.define('bls-lib', BlsLib);

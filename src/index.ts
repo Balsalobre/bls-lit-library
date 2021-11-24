@@ -1,1 +1,1 @@
-export { BlsLib } from './BlsLib.js';
+export { BlsLib } from './components/BlsLib.js';

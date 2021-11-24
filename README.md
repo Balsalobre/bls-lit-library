@@ -38,15 +38,20 @@ Utilizaremos para testear de manera rápida los componentes la librería `@open-
   npm run test:watch
 ```
 
-Para cada uno de nuestros stages test deberemos limpiar el componente de la siguiente manera.
-
+Para cada uno de nuestros stages de test deberemos limpiar el componente de la siguiente manera.
 ```ts
   let el: BlsLib;
   // Clean and initialize the component
   const cleanComponent = async () => {
-  await fixture<BlsLib>(html`<bls-lib></bls-lib>`);
+  el = await fixture<BlsLib>(html`<bls-lib></bls-lib>`);
   await el.updateComplete;
 }
+```
+
+Testeando propiedades de componentes
+```ts
+  expect(el.placeholder).to.equal('Default placeholder');
+  assert.typeOf(el.placeholder, 'String');
 ```
 
 ## Usage
