@@ -27,15 +27,29 @@ export class BlsLib extends LitElement {
 
   @property({ type: Boolean, attribute: 'with-label' })
   withLabel = false;
-
-  __increment() {
-    this.label += 1;
+  
+  get _getDescription() {
+    return this.withDescription ?
+      html`<label id="description">${this.description}</label>` : '';
   }
+
+  get _getImput() {
+    return html`
+      <input type="text" placeholder="${this.placeholder}" id="input"/>
+    `;
+  }
+
+  get _getLabel(){
+    return this.withLabel ? html`<label>${this.label}</label>` : '';
+  }
+
+
 
   render() {
     return html`
-      <h2>${this.title} Nr. ${this.label}!</h2>
-      <button @click=${this.__increment}>increment</button>
+      ${this._getLabel}
+      ${this._getImput}
+      ${this._getDescription}
     `;
   }
 }

@@ -33,8 +33,24 @@ describe('BlsLib', () => {
       expect(el.withLabel).to.equal(false);
       assert.typeOf(el.withLabel, 'Boolean');
     });
-  });
     
+    describe('View component in DOM', () => {
+      it('Label is not displayed', () => {
+        const labelText = el.shadowRoot?.querySelector('#label')?.textContent;
+        expect(labelText).to.equal(undefined);
+      });
+
+      it('Description is not displayed', () => {
+        const description = el.shadowRoot?.querySelector('#description')?.textContent;
+        expect(description).to.equal(undefined);
+      });
+
+      it('View input', () => {
+        const inputText = el.shadowRoot?.querySelector('#input');
+        expect(inputText?.getAttribute('id')).to.equal('input');
+      });
+    });
+  });
 
   // it('has a default title "Hey there" and counter 5', async () => {
   //   const el = await fixture<BlsLib>(html`<bls-lib></bls-lib>`);

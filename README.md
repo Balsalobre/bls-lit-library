@@ -48,11 +48,20 @@ Para cada uno de nuestros stages de test deberemos limpiar el componente de la s
 }
 ```
 
-Testeando propiedades de componentes
+Testeando propiedades de componentes.
 ```ts
   expect(el.placeholder).to.equal('Default placeholder');
   assert.typeOf(el.placeholder, 'String');
 ```
+
+Testeando componentes renderizados.
+```ts
+  it('View input', () => {
+    const inputText = el.shadowRoot?.querySelector('#input');
+    expect(inputText?.getAttribute('id')).to.equal('input');
+  });
+``` 
+
 
 ## Usage
 
