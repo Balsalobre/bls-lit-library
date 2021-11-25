@@ -40,6 +40,7 @@ export class BlsLib extends LitElement {
   }
 
   get _getLabel(){
+    console.info("get label");
     return this.withLabel ? html`<label>${this.label}</label>` : '';
   }
 

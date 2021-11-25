@@ -1,9 +1,9 @@
 {
   "name": "bls-lib-components",
-  "description": "Webcomponent bls-lib",
+  "description": "Webcomponent bls-lib with lit.js 2.0",
   "license": "MIT",
   "author": "cbalsalobre",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",

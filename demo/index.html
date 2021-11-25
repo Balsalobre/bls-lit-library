@@ -15,11 +15,10 @@
     import { html, render } from 'lit';
     import '../dist/src/bls-lib.js';
 
-    const title = 'Hello owc World!';
+    const placeholder = "Test Placeholder";
     render(
       html`
-        <bls-lib .title=${title}>
-          some light-dom
+        <bls-lib .placeholder=${placeholder}>
         </bls-lib>
       `,
       document.querySelector('#demo')
