@@ -83,3 +83,23 @@ Testeando componentes renderizados.
   npm run storybook
   npm run storybook:build
 ```
+
+## Publicando la librería
+En nuestro fichero package.json debemos tener los siguientes campos `type`, `main` y `module`
+
+```json
+  {
+    "name": "bls-lib",
+    "description": "Webcomponent bls-lib following open-wc recommendations",
+    "license": "MIT",
+    "author": "bls-lib",
+    "version": "0.0.0",
+    "type": "module",
+    "main": "dist/src/index.js",
+    "module": "dist/src/index.js",
+    "exports": {
+      ".": "./dist/src/index.js",
+      "./bls-lib.js": "./dist/src/bls-lib.js"
+    }
+  }
+```

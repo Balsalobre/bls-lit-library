@@ -1,9 +1,10 @@
 {
-  "name": "bls-lib",
-  "description": "Webcomponent bls-lib following open-wc recommendations",
+  "name": "bls-lib-components",
+  "description": "Webcomponent bls-lib",
   "license": "MIT",
-  "author": "bls-lib",
+  "author": "cbalsalobre",
   "version": "0.0.0",
+  "type": "module",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "exports": {
@@ -82,5 +83,9 @@
       "eslint --fix",
       "prettier --write"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Balsalobre/bls-lit-library.git"
   }
 }
