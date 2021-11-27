@@ -1,13 +1,13 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 
-export class BlsLib extends LitElement {
+export class BlsInput extends LitElement {
   static styles = css`
-    /* :host {
+    :host {
       display: block;
       padding: 25px;
-      color: var(--bls-lib-text-color, #000);
-    } */
+      background-color: #d67070;
+    }
   `;
 
   @property({ type: String })
@@ -30,7 +30,9 @@ export class BlsLib extends LitElement {
 
   get _getDescription() {
     return this.withDescription
-      ? html`<label id="description" class="${this.descriptionType}">${this.description}</label>`
+      ? html`<label id="description" class="${this.descriptionType}"
+          >${this.description}</label
+        >`
       : '';
   }
 

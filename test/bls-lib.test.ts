@@ -8,10 +8,9 @@ let el: BlsLib;
 const cleanComponent = async () => {
   el = await fixture<BlsLib>(html`<bls-lib></bls-lib>`);
   await el.updateComplete;
-}
+};
 
 describe('BlsLib', () => {
-
   describe('Default input value', () => {
     cleanComponent();
     it('Props value', () => {
@@ -29,11 +28,11 @@ describe('BlsLib', () => {
 
       expect(el.withDescription).to.equal(false);
       assert.typeOf(el.withDescription, 'Boolean');
-      
+
       expect(el.withLabel).to.equal(false);
       assert.typeOf(el.withLabel, 'Boolean');
     });
-    
+
     describe('View component in DOM', () => {
       it('Label is not displayed', () => {
         const labelText = el.shadowRoot?.querySelector('#label')?.textContent;
@@ -41,7 +40,8 @@ describe('BlsLib', () => {
       });
 
       it('Description is not displayed', () => {
-        const description = el.shadowRoot?.querySelector('#description')?.textContent;
+        const description =
+          el.shadowRoot?.querySelector('#description')?.textContent;
         expect(description).to.equal(undefined);
       });
 
@@ -53,15 +53,34 @@ describe('BlsLib', () => {
   });
 
   describe('Change props', () => {
-     cleanComponent();
+    cleanComponent();
 
-     it('View label is DOM', async () => {
+    it('View label in DOM', async () => {
       el.label = 'CUSTOM TEXT';
       el.withLabel = true;
       await el.updateComplete;
       const text = el.shadowRoot?.querySelector('#label')?.textContent;
       expect(text).to.equal('CUSTOM TEXT');
-     });
+    });
+
+    it('View description in DOM', async () => {
+      el.description = 'CUSTOM TEXT';
+      el.withDescription = true;
+      el.descriptionType = 'warning';
+      await el.updateComplete;
+      const descriptionElement = el.shadowRoot?.querySelector('#description');
+      const text = descriptionElement?.textContent;
+      const descriptionType = descriptionElement?.getAttribute('class');
+      expect(descriptionType).to.equal('warning');
+      expect(text).to.equal('CUSTOM TEXT');
+    });
+
+    it('View input', async () => {
+      el.placeholder = 'CUSTOM TEXT';
+      await el.updateComplete;
+      const input = el.shadowRoot?.querySelector('#input');
+      expect(input?.getAttribute('placeholder')).to.equal('CUSTOM TEXT');
+    });
   });
 
   // it('has a default title "Hey there" and counter 5', async () => {

@@ -14,6 +14,7 @@
   <script type="module">
     import { html, render } from 'lit';
     import '../dist/src/bls-lib.js';
+    import '../dist/src/bls-input.js'
 
     const placeholder = "Test Placeholder";
     const label = 'Test Label';
@@ -22,6 +23,10 @@
       html`
         <bls-lib .placeholder=${placeholder} .withLabel=${withLabel} .label=${label}>
         </bls-lib>
+
+        <bls-lib with-label label="Name" placeholder="Enter name..."></bls-lib>
+        <bls-input></bls-input>
+
       `,
       document.querySelector('#demo')
     );
