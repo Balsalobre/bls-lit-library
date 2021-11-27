@@ -16,9 +16,11 @@
     import '../dist/src/bls-lib.js';
 
     const placeholder = "Test Placeholder";
+    const label = 'Test Label';
+    const withLabel = true;
     render(
       html`
-        <bls-lib .placeholder=${placeholder}>
+        <bls-lib .placeholder=${placeholder} .withLabel=${withLabel} .label=${label}>
         </bls-lib>
       `,
       document.querySelector('#demo')

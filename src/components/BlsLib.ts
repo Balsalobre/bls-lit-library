@@ -35,13 +35,13 @@ export class BlsLib extends LitElement {
 
   get _getImput() {
     return html`
-      <input type="text" placeholder="${this.placeholder}" id="input"/>
+      <input id="input" type="text" placeholder="${this.placeholder}" />
     `;
   }
 
   get _getLabel(){
-    console.info("get label");
-    return this.withLabel ? html`<label>${this.label}</label>` : '';
+    console.info("get label", this.label);
+    return this.withLabel ? html`<label id="label">${this.label}</label>` : '';
   }
 
 

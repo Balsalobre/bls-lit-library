@@ -52,6 +52,18 @@ describe('BlsLib', () => {
     });
   });
 
+  describe('Change props', () => {
+     cleanComponent();
+
+     it('View label is DOM', async () => {
+      el.label = 'CUSTOM TEXT';
+      el.withLabel = true;
+      await el.updateComplete;
+      const text = el.shadowRoot?.querySelector('#label')?.textContent;
+      expect(text).to.equal('CUSTOM TEXT');
+     });
+  });
+
   // it('has a default title "Hey there" and counter 5', async () => {
   //   const el = await fixture<BlsLib>(html`<bls-lib></bls-lib>`);
 
