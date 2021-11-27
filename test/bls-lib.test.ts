@@ -55,12 +55,27 @@ describe('BlsLib', () => {
   describe('Change props', () => {
      cleanComponent();
 
-     it('View label is DOM', async () => {
+     it('View label in DOM', async () => {
       el.label = 'CUSTOM TEXT';
       el.withLabel = true;
       await el.updateComplete;
       const text = el.shadowRoot?.querySelector('#label')?.textContent;
       expect(text).to.equal('CUSTOM TEXT');
+     });
+
+     it('View description in DOM', async () => {
+      el.description = 'CUSTOM TEXT';
+      el.withDescription = true;
+      await el.updateComplete;
+      const text = el.shadowRoot?.querySelector('#description')?.textContent;
+      expect(text).to.equal('CUSTOM TEXT');
+     });
+
+     it('View input', async () => {
+      el.placeholder = 'CUSTOM TEXT';
+      await el.updateComplete;
+      const input = el.shadowRoot?.querySelector('#input');
+      expect(input?.getAttribute('placeholder')).to.equal('CUSTOM TEXT')
      });
   });
 
