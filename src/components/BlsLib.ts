@@ -29,8 +29,9 @@ export class BlsLib extends LitElement {
   withLabel = false;
   
   get _getDescription() {
-    return this.withDescription ?
-      html`<label id="description">${this.description}</label>` : '';
+    return this.withDescription
+      ? html`<label id="description" class="${this.descriptionType}">${this.description}</label>`
+      : '';
   }
 
   get _getImput() {

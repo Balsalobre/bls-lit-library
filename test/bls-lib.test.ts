@@ -66,8 +66,12 @@ describe('BlsLib', () => {
      it('View description in DOM', async () => {
       el.description = 'CUSTOM TEXT';
       el.withDescription = true;
+      el.descriptionType = 'warning';
       await el.updateComplete;
-      const text = el.shadowRoot?.querySelector('#description')?.textContent;
+      const descriptionElement = el.shadowRoot?.querySelector('#description');
+      const text = descriptionElement?.textContent;
+      const descriptionType = descriptionElement?.getAttribute('class');
+      expect(descriptionType).to.equal('warning'); 
       expect(text).to.equal('CUSTOM TEXT');
      });
 
