@@ -30,9 +30,7 @@ export class BlsInput extends LitElement {
 
   get _getDescription() {
     return this.withDescription
-      ? html`<label id="description" class="${this.descriptionType}"
-          >${this.description}</label
-        >`
+      ? html`<label id="description" class="${this.descriptionType}">${this.description}</label>`
       : '';
   }
 

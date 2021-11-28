@@ -1,16 +1,16 @@
 import { html } from 'lit';
 import { fixture, expect, assert } from '@open-wc/testing';
-import { BlsLib } from '../src/components/BlsLib.js';
+import { BlsInput } from '../src/components/BlsInput.js';
 import '../src/bls-lib.js';
 
-let el: BlsLib;
+let el: BlsInput;
 // Clean and initialize the component
 const cleanComponent = async () => {
-  el = await fixture<BlsLib>(html`<bls-lib></bls-lib>`);
+  el = await fixture<BlsInput>(html`<bls-input></bls-input>`);
   await el.updateComplete;
 };
 
-describe('BlsLib', () => {
+describe('BlsInput', () => {
   describe('Default input value', () => {
     cleanComponent();
     it('Props value', () => {

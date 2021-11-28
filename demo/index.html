@@ -14,19 +14,15 @@
   <script type="module">
     import { html, render } from 'lit';
     import '../dist/src/bls-lib.js';
-    import '../dist/src/bls-input.js'
-
+    
     const placeholder = "Test Placeholder";
     const label = 'Test Label';
     const withLabel = true;
     render(
       html`
-        <bls-lib .placeholder=${placeholder} .withLabel=${withLabel} .label=${label}>
-        </bls-lib>
-
-        <bls-lib with-label label="Name" placeholder="Enter name..."></bls-lib>
-        <bls-input></bls-input>
-
+        <bls-input with-label label="Name" placeholder="Enter name..."></bls-input>
+        <bls-input .placeholder=${placeholder} .withLabel=${withLabel} .label=${label}>
+        </bls-input>
       `,
       document.querySelector('#demo')
     );

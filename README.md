@@ -56,11 +56,18 @@ Testeando propiedades de componentes.
 
 Testeando componentes renderizados.
 ```ts
-  it('View input', () => {
-    const inputText = el.shadowRoot?.querySelector('#input');
-    expect(inputText?.getAttribute('id')).to.equal('input');
-  });
-``` 
+  it('View description in DOM', async () => {
+      el.description = 'CUSTOM TEXT';
+      el.withDescription = true;
+      el.descriptionType = 'warning';
+      await el.updateComplete;
+      const descriptionElement = el.shadowRoot?.querySelector('#description');
+      const text = descriptionElement?.textContent;
+      const descriptionType = descriptionElement?.getAttribute('class');
+      expect(descriptionType).to.equal('warning');
+      expect(text).to.equal('CUSTOM TEXT');
+    });
+```
 
 
 ## Usage
