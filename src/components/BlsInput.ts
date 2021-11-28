@@ -1,14 +1,20 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
+import { MainStyles } from '../style/index.js';
+import { cssConfig } from '../style/config.js';
+
 
 export class BlsInput extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      padding: 25px;
-      background-color: #d67070;
-    }
-  `;
+
+  static styles = [
+    MainStyles.styles,
+    css`
+      :host {
+        display: block;
+        padding: 25px;
+        background-color: ${unsafeCSS(cssConfig.colours.cadet)};
+      }
+  `];
 
   @property({ type: String })
   description = 'Default description';
@@ -28,6 +34,7 @@ export class BlsInput extends LitElement {
   @property({ type: Boolean, attribute: 'with-label' })
   withLabel = false;
 
+
   get _getDescription() {
     return this.withDescription
       ? html`<label id="description" class="${this.descriptionType}">${this.description}</label>`
@@ -45,6 +52,11 @@ export class BlsInput extends LitElement {
   }
 
   render() {
-    return html` ${this._getLabel} ${this._getImput} ${this._getDescription} `;
+    console.log(cssConfig);
+    return html`
+      <div class="flex-center">
+        ${this._getLabel} ${this._getImput} ${this._getDescription}
+      </div>
+    `;
   }
 }
