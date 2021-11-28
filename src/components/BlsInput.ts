@@ -1,4 +1,4 @@
-import { html, css, LitElement, unsafeCSS } from 'lit';
+import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 import { MainStyles } from '../style/index.js';
 import { cssConfig } from '../style/config.js';
@@ -10,9 +10,21 @@ export class BlsInput extends LitElement {
     MainStyles.styles,
     css`
       :host {
-        display: block;
-        padding: 25px;
-        background-color: ${unsafeCSS(cssConfig.colours.cadet)};
+        --input-border: #8b8a8b;
+        --input-focus-h: 245;
+        --input-focus-s: 100%;
+        --input-focus-l: 42%;
+      }
+
+      .input {
+        font-size: 16px;
+        font-size: max(16px, 1em);
+        font-family: inherit;
+        padding: 0.25em 0.5em;
+        background-color: #fff;
+        border: 2px solid var(--input-border);
+        border-radius: 4px;
+        line-height: 1;
       }
   `];
 
@@ -43,7 +55,7 @@ export class BlsInput extends LitElement {
 
   get _getImput() {
     return html`
-      <input id="input" type="text" placeholder="${this.placeholder}" />
+      <input id="input" class="input" type="text" placeholder="${this.placeholder}" />
     `;
   }
 
