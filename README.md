@@ -110,3 +110,5 @@ En nuestro fichero package.json debemos tener los siguientes campos `type`, `mai
     }
   }
 ```
+
+## Global CSS
