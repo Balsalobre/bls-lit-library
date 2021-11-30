@@ -112,3 +112,20 @@ En nuestro fichero package.json debemos tener los siguientes campos `type`, `mai
 ```
 
 ## Global CSS
+Usamos una clase con una propiedad estática.
+
+No importa cuantos objetos de la clase se definan todos comparten la misma variable estática.
+
+
+```ts
+  @customElement('main-styles')
+  export class MainStyles extends LitElement {
+    static styles = css`
+      .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      } 
+    ` as CSSResultGroup;
+  }
+```
