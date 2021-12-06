@@ -9,9 +9,6 @@ export class BlsInput extends LitElement {
     css`
       :host {
         --input-border: #8b8a8b;
-        --input-focus-h: 245;
-        --input-focus-s: 100%;
-        --input-focus-l: 42%;
       }
 
       *,
@@ -20,21 +17,52 @@ export class BlsInput extends LitElement {
         box-sizing: border-box;
       }
 
+      .group {
+        position: relative;
+        display: inline-block;
+      }
+
       .input {
+        padding: 10px 0;
         font-size: 16px;
-        font-size: max(16px, 1em);
-        font-family: inherit;
-        padding: 0.25em 0.5em;
-        background-color: #fff;
-        border: 2px solid var(--input-border);
-        border-radius: 4px;
-        line-height: 1;
+        color: #fff;
+        margin-bottom: 30px;
+        margin-right: 10px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        outline: none;
+        background: transparent;
+      }
+
+      label {
+        position: absolute;
+        top:0;
+        left: 0;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: .5s;
+        text-transform: capitalize;
+      }
+
+      .group .input:focus ~ label {
+        top: -20px;
+        left: 0;
+        color: #a1cfff;
+        font-size: 12px;
       }
 
       .input[readonly] {
         border-style: dotted;
         cursor: not-allowed;
         color: #777;
+      }
+
+      .input[disabled] {
+        --input-border: #ccc;
+        background-color: #eee;
+        cursor: not-allowed;
       }
   `];
 
@@ -43,9 +71,6 @@ export class BlsInput extends LitElement {
 
   @property({ type: String })
   label = 'Default label';
-
-  @property({ type: String })
-  placeholder = 'Default placeholder';
 
   @property({ type: String, attribute: 'description-type' })
   descriptionType = 'info';
@@ -56,8 +81,11 @@ export class BlsInput extends LitElement {
   @property({ type: Boolean, attribute: 'with-label' })
   withLabel = false;
 
-  @property({ type: Boolean, attribute: 'is-readonly' })
+  @property({ type: Boolean, attribute: 'readonly' })
   isReadonly = false;
+
+  @property({ type: Boolean, attribute: 'disabled'})
+  disabled = false;
 
 
   get _getDescription() {
@@ -68,7 +96,12 @@ export class BlsInput extends LitElement {
 
   get _getImput() {
     return html`
-      <input id="input" class="input" type="text" ?readonly="${this.isReadonly}" placeholder="${this.placeholder}" />
+      <input
+        id="input"
+        class="input"
+        type="text"
+        ?readonly="${this.isReadonly}"
+        ?disabled="${this.disabled}"/>
     `;
   }
 
@@ -79,8 +112,8 @@ export class BlsInput extends LitElement {
   render() {
 
     return html`
-      <div class="flex-center">
-        ${this._getLabel} ${this._getImput} ${this._getDescription}
+      <div class="group">
+        ${this._getImput} ${this._getLabel} ${this._getDescription}
       </div>
     `;
   }

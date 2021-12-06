@@ -23,9 +23,6 @@ describe('BlsInput', () => {
       expect(el.label).to.equal('Default label');
       assert.typeOf(el.label, 'String');
 
-      expect(el.placeholder).to.equal('Default placeholder');
-      assert.typeOf(el.placeholder, 'String');
-
       expect(el.withDescription).to.equal(false);
       assert.typeOf(el.withDescription, 'Boolean');
 
@@ -75,12 +72,12 @@ describe('BlsInput', () => {
       expect(text).to.equal('CUSTOM TEXT');
     });
 
-    it('View input', async () => {
-      el.placeholder = 'CUSTOM TEXT';
-      await el.updateComplete;
-      const input = el.shadowRoot?.querySelector('#input');
-      expect(input?.getAttribute('placeholder')).to.equal('CUSTOM TEXT');
-    });
+    // it('View input', async () => {
+    //   el.placeholder = 'CUSTOM TEXT';
+    //   await el.updateComplete;
+    //   const input = el.shadowRoot?.querySelector('#input');
+    //   expect(input?.getAttribute('placeholder')).to.equal('CUSTOM TEXT');
+    // });
   });
 
   // it('has a default title "Hey there" and counter 5', async () => {
