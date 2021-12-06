@@ -1,8 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 import { MainStyles } from '../style/index.js';
-import { cssConfig } from '../style/config.js';
-
 
 export class BlsInput extends LitElement {
 
@@ -16,6 +14,12 @@ export class BlsInput extends LitElement {
         --input-focus-l: 42%;
       }
 
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
       .input {
         font-size: 16px;
         font-size: max(16px, 1em);
@@ -25,6 +29,12 @@ export class BlsInput extends LitElement {
         border: 2px solid var(--input-border);
         border-radius: 4px;
         line-height: 1;
+      }
+
+      .input[readonly] {
+        border-style: dotted;
+        cursor: not-allowed;
+        color: #777;
       }
   `];
 
@@ -46,6 +56,9 @@ export class BlsInput extends LitElement {
   @property({ type: Boolean, attribute: 'with-label' })
   withLabel = false;
 
+  @property({ type: Boolean, attribute: 'is-readonly' })
+  isReadonly = false;
+
 
   get _getDescription() {
     return this.withDescription
@@ -55,7 +68,7 @@ export class BlsInput extends LitElement {
 
   get _getImput() {
     return html`
-      <input id="input" class="input" type="text" placeholder="${this.placeholder}" />
+      <input id="input" class="input" type="text" ?readonly="${this.isReadonly}" placeholder="${this.placeholder}" />
     `;
   }
 
@@ -64,7 +77,7 @@ export class BlsInput extends LitElement {
   }
 
   render() {
-    console.log(cssConfig);
+
     return html`
       <div class="flex-center">
         ${this._getLabel} ${this._getImput} ${this._getDescription}

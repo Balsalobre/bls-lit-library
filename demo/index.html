@@ -3,8 +3,14 @@
 <head>
   <meta charset="utf-8">
   <style>
-    body {
-      background-image: radial-gradient(circle at 0% 0%, #373b52, #252736 51%, #1d1e26);
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+    :root {
+      --global-font: 'Roboto', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
     }
   </style>
 </head>
@@ -20,9 +26,8 @@
     const withLabel = true;
     render(
       html`
-        <bls-input with-label label="Name" placeholder="Enter name..."></bls-input>
-        <bls-input .placeholder=${placeholder} .withLabel=${withLabel} .label=${label}>
-        </bls-input>
+        <bls-input with-label label="Name" is-readonly="true" placeholder="Enter name..."></bls-input>
+        <bls-input .withLabel=${withLabel} .label=${label} .placeholder=${placeholder}></bls-input>
       `,
       document.querySelector('#demo')
     );

@@ -145,3 +145,6 @@ Tendremos además una variable de configuración.
    }
  }
 ```
+
+https://www.youtube.com/watch?v=yViIPm2eNnA&t=1276s&ab_channel=QwertyPy
+https://moderncss.dev/custom-css-styles-for-form-inputs-and-textareas/
