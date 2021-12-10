@@ -46,26 +46,13 @@ export class BlsInput extends LitElement {
         text-transform: capitalize;
       }
 
-      .group__input:focus + .group__label {
+      .group__input:focus + .group__label,
+      .group__input:not(:placeholder-shown).group__input:not(:focus)+ .group__label {
         top: -20px;
         left: 0;
         color: #a1cfff;
         font-size: 12px;
       }
-
-      .group__input:not(:placeholder-shown).group__input:not(:focus)+ .group__label{
-        top: -20px;
-        left: 0;
-        color: #d86113;
-        font-size: 12px;
-      }
-
-      /* .group__input:not(:placeholder-shown).group__input:not(:focus)+ .group__label {
-        top: -20px;
-        left: 0;
-        color: #a1cfff;
-        font-size: 12px;
-      } */
 
       .group__input[readonly] {
         border-style: dotted;
@@ -114,6 +101,7 @@ export class BlsInput extends LitElement {
         id="input"
         class="group__input"
         type="text"
+        placeholder="&nbsp;"
         ?readonly="${this.isReadonly}"
         ?disabled="${this.disabled}"/>
     `;
