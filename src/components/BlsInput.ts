@@ -22,7 +22,7 @@ export class BlsInput extends LitElement {
         display: inline-block;
       }
 
-      .input {
+      .group__input {
         padding: 10px 0;
         font-size: 16px;
         color: #fff;
@@ -34,7 +34,7 @@ export class BlsInput extends LitElement {
         background: transparent;
       }
 
-      label {
+      .group__label {
         position: absolute;
         top:0;
         left: 0;
@@ -46,20 +46,34 @@ export class BlsInput extends LitElement {
         text-transform: capitalize;
       }
 
-      .group .input:focus ~ label {
+      .group__input:focus + .group__label {
         top: -20px;
         left: 0;
         color: #a1cfff;
         font-size: 12px;
       }
 
-      .input[readonly] {
+      .group__input:not(:placeholder-shown).group__input:not(:focus)+ .group__label{
+        top: -20px;
+        left: 0;
+        color: #d86113;
+        font-size: 12px;
+      }
+
+      /* .group__input:not(:placeholder-shown).group__input:not(:focus)+ .group__label {
+        top: -20px;
+        left: 0;
+        color: #a1cfff;
+        font-size: 12px;
+      } */
+
+      .group__input[readonly] {
         border-style: dotted;
         cursor: not-allowed;
         color: #777;
       }
 
-      .input[disabled] {
+      .group__input[disabled] {
         --input-border: #ccc;
         background-color: #eee;
         cursor: not-allowed;
@@ -98,7 +112,7 @@ export class BlsInput extends LitElement {
     return html`
       <input
         id="input"
-        class="input"
+        class="group__input"
         type="text"
         ?readonly="${this.isReadonly}"
         ?disabled="${this.disabled}"/>
@@ -106,7 +120,7 @@ export class BlsInput extends LitElement {
   }
 
   get _getLabel() {
-    return this.withLabel ? html`<label id="label">${this.label}</label>` : '';
+    return this.withLabel ? html`<label id="label" class="group__label">${this.label}</label>` : '';
   }
 
   render() {
