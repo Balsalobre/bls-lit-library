@@ -47,11 +47,19 @@ export class BlsInput extends LitElement {
       }
 
       .group__input:focus + .group__label,
-      .group__input:not(:placeholder-shown).group__input:not(:focus)+ .group__label {
+      .group__input:not(:placeholder-shown).group__input:not(:focus) + .group__label {
         top: -20px;
         left: 0;
-        color: #a1cfff;
         font-size: 12px;
+      }
+
+      .group__input:focus {
+        border-bottom-color: var(--input-focus-color,  #a1cfff);
+        
+      }
+
+      .group__input:focus + .group__label {
+        color: var(--input-focus-color,  #a1cfff);
       }
 
       .group__input[readonly] {
