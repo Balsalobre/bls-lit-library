@@ -78,18 +78,6 @@ const Template: Story<ArgTypes> = ({
     ?disabled="${disabled}"
   >
   </bls-input>
-
-  <bls-input
-    ambient="${ambient}"
-    description="${description}"
-    description-type="${descriptionType}"
-    label="${label}"
-    ?with-description="${withDescription}"
-    ?with-label="${withLabel}"
-    ?is-readonly="${isReadonly}"
-    ?disabled="${disabled}"
-  >
-  </bls-input>
 `;
 
 export const DefaultInput = Template.bind({});
