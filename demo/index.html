@@ -27,12 +27,13 @@
     
     const label = 'Test Label';
     const withLabel = true;
+    const ambient = 'dark';
     render(
       html`
-        <bls-input with-label label="Test Materialize"></bls-input>
-        <bls-input with-label label="Name"></bls-input>
-        <bls-input with-label label="Name" disabled="true"></bls-input>
-        <bls-input .withLabel=${withLabel} .label=${label}></bls-input>
+        <bls-input with-label ambient="dark" label="Test Materialize"></bls-input>
+        <bls-input with-label ambient="dark"label="Name"></bls-input>
+        <bls-input with-label ambient="dark"label="Name" disabled="true"></bls-input>
+        <bls-input .ambient=${ambient} .withLabel=${withLabel} .label=${label}></bls-input>
       `,
       document.querySelector('#demo')
     );
