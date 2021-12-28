@@ -8,9 +8,14 @@ export class BlsInput extends LitElement {
     MainStyles.styles,
     css`
       :host {
-        --input-border: #8b8a8b;
-        --light-color: #323c79;
+        --light-color: #818181;
         --dark-color: #a1cfff;
+
+        --light-text-color: #0e0e0e;
+        
+        --light-color-focused: #476ead;
+        --dark-color-focused: #476ead;
+
         --light-border: #323c79;
         --dark-border: #a1cfff;
       }
@@ -24,13 +29,15 @@ export class BlsInput extends LitElement {
       .group {
         position: relative;
         display: inline-block;
+        width: 100%;
+        height: 100%;
+        padding-top: 1rem;
       }
 
       .group__input {
-        padding: 10px 0;
+        width: 99%;
+        padding: 0.6rem 0;
         font-size: 16px;
-        margin-bottom: 30px;
-        margin-right: 10px;
         border: none;
         outline: none;
         background: transparent;
@@ -38,11 +45,10 @@ export class BlsInput extends LitElement {
 
       .group__label {
         position: absolute;
-        top:0;
+        top: 16px;
         left: 0;
         padding: 10px 0;
         font-size: 16px;
-        color: #fff;
         pointer-events: none;
         transition: .5s;
         text-transform: capitalize;
@@ -50,18 +56,9 @@ export class BlsInput extends LitElement {
 
       .group__input:focus + .group__label,
       .group__input:not(:placeholder-shown).group__input:not(:focus) + .group__label {
-        top: -20px;
+        top: -7px;
         left: 0;
         font-size: 12px;
-      }
-
-      .group__input:focus {
-        border-bottom-color: var(--input-focus-color,  #a1cfff);
-        
-      }
-
-      .group__input:focus + .group__label {
-        color: var(--input-focus-color,  #a1cfff);
       }
 
       .group__input[readonly] {
@@ -77,13 +74,26 @@ export class BlsInput extends LitElement {
       }
 
       .group.light .group__input {
+        color: var(--light-text-color);
+        border-bottom: 1px solid var(--light-color);
+      }
+
+      .group.light .group__label {
         color: var(--light-color);
-        border-bottom: 1px solid var(--light-border);
       }
 
       .group.dark .group__input {
         color: var(--dark-color);
-        border-bottom: 1px solid var(--dark-border);
+        border-bottom: 1px solid var(--dark-color);
+      }
+
+      .group.light .group__input:focus {
+        border-bottom-color: var(--input-focus-color,  var(--light-color-focused));
+        color: var(--light-text-color);
+      }
+
+      .group.light .group__input:focus + .group__label {
+        color: var(--input-focus-color,  var(--light-color-focused));
       }
   `];
 
