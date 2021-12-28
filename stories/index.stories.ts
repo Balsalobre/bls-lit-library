@@ -3,11 +3,40 @@ import '../src/bls-lib.js';
 
 export default {
   title: 'BlsLib',
-  component: 'bls-lib',
+  component: 'bls-input',
   argTypes: {
-    title: { control: 'text' },
-    counter: { control: 'number' },
-    textColor: { control: 'color' },
+    ambient: {
+      control: 'ambient',
+      description: 'Cambiar el tema de light a dark'
+    },
+    description: {
+      control: 'description',
+      description: 'Texto inferior del input'
+    },
+    label: {
+      control: 'label',
+      description: 'Texto superior del input'
+    },
+    descriptionType: {
+      control: 'descriptionType',
+      description: 'Cambiar el color de la descripción'
+    },
+    withDescription: {
+      control: 'withDescription',
+      description: 'Mostar u ocultar la descripción'
+    },
+    withLabel: {
+      control: 'withLabel',
+      description: 'Mostrar u ocultar la label'
+    },
+    isReadonly: {
+      control: 'isReadonly',
+      description: 'Definir el campo para solo lectura'
+    },
+    disabled: {
+      control: 'disabled',
+      description: 'Propiedad para deshabilitar el campo'
+    }
   },
 };
 
@@ -18,43 +47,43 @@ interface Story<T> {
 }
 
 interface ArgTypes {
-  title?: string;
-  counter?: number;
-  textColor?: string;
-  slot?: TemplateResult;
+  ambient?: string;
+  description?: string;
+  label?: string;
+  descriptionType?: string;
+  withDescription?: boolean;
+  withLabel?: boolean;
+  isReadonly?: boolean;
+  disabled?: boolean;
 }
 
 const Template: Story<ArgTypes> = ({
-  title = 'Hello world',
-  counter = 5,
-  textColor,
-  slot,
+  ambient = 'light',
+  description = 'Default description',
+  label = 'Name',
+  descriptionType = 'info',
+  withDescription = false,
+  withLabel = true,
+  isReadonly = false,
+  disabled = false,
 }: ArgTypes) => html`
-  <bls-lib
-    style="--bls-lib-text-color: ${textColor || 'black'}"
-    .title=${title}
-    .counter=${counter}
+  <bls-input
+    ambient="${ambient}"
+    description="${description}"
+    description-type="${descriptionType}"
+    label="${label}"
+    ?with-description="${withDescription}"
+    ?with-label="${withLabel}"
+    ?is-readonly="${isReadonly}"
+    ?disabled="${disabled}"
   >
-    ${slot}
-  </bls-lib>
+  </bls-input>
 `;
 
-export const Regular = Template.bind({});
-
-export const CustomTitle = Template.bind({});
-CustomTitle.args = {
-  title: 'My title',
+export const DefaultInput = Template.bind({});
+export const DarkInput = Template.bind({});
+DarkInput.args = {
+  ambient: 'dark'
 };
 
-export const CustomCounter = Template.bind({});
-CustomCounter.args = {
-  counter: 123456,
-};
 
-export const SlottedContent = Template.bind({});
-SlottedContent.args = {
-  slot: html`<p>Slotted content</p>`,
-};
-SlottedContent.argTypes = {
-  slot: { table: { disable: true } },
-};

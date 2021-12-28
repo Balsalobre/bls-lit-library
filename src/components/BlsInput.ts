@@ -9,6 +9,10 @@ export class BlsInput extends LitElement {
     css`
       :host {
         --input-border: #8b8a8b;
+        --light-color: #323c79;
+        --dark-color: #a1cfff;
+        --light-border: #323c79;
+        --dark-border: #a1cfff;
       }
 
       *,
@@ -25,11 +29,9 @@ export class BlsInput extends LitElement {
       .group__input {
         padding: 10px 0;
         font-size: 16px;
-        color: #fff;
         margin-bottom: 30px;
         margin-right: 10px;
         border: none;
-        border-bottom: 1px solid #fff;
         outline: none;
         background: transparent;
       }
@@ -73,7 +75,20 @@ export class BlsInput extends LitElement {
         background-color: #eee;
         cursor: not-allowed;
       }
+
+      .group.light .group__input {
+        color: var(--light-color);
+        border-bottom: 1px solid var(--light-border);
+      }
+
+      .group.dark .group__input {
+        color: var(--dark-color);
+        border-bottom: 1px solid var(--dark-border);
+      }
   `];
+
+  @property({ type: String })
+  ambient = 'light';
 
   @property({ type: String })
   description = 'Default description';
@@ -122,7 +137,7 @@ export class BlsInput extends LitElement {
   render() {
 
     return html`
-      <div class="group">
+      <div class="group ${this.ambient}">
         ${this._getImput} ${this._getLabel} ${this._getDescription}
       </div>
     `;

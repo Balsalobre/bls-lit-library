@@ -14,6 +14,9 @@ describe('BlsInput', () => {
   describe('Default input value', () => {
     cleanComponent();
     it('Props value', () => {
+      expect(el.ambient).to.equal('light');
+      assert.typeOf(el.ambient, 'String');
+
       expect(el.description).to.equal('Default description');
       assert.typeOf(el.description, 'String');
 
