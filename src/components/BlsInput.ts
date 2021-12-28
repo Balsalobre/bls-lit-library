@@ -9,12 +9,13 @@ export class BlsInput extends LitElement {
     css`
       :host {
         --light-color: #818181;
-        --dark-color: #a1cfff;
+        --dark-color: #959595;
 
         --light-text-color: #0e0e0e;
+        --dark-text-color: #f3f3f3;
         
         --light-color-focused: #476ead;
-        --dark-color-focused: #476ead;
+        --dark-color-focused: #859dc3;
 
         --light-border: #323c79;
         --dark-border: #a1cfff;
@@ -78,13 +79,17 @@ export class BlsInput extends LitElement {
         border-bottom: 1px solid var(--light-color);
       }
 
+      .group.dark .group__input {
+        color: var(--dark-text-color);
+        border-bottom: 1px solid var(--dark-color);
+      }
+
       .group.light .group__label {
         color: var(--light-color);
       }
 
-      .group.dark .group__input {
+      .group.dark .group__label {
         color: var(--dark-color);
-        border-bottom: 1px solid var(--dark-color);
       }
 
       .group.light .group__input:focus {
@@ -92,8 +97,17 @@ export class BlsInput extends LitElement {
         color: var(--light-text-color);
       }
 
+      .group.dark .group__input:focus {
+        border-bottom-color: var(--input-focus-color, var(--dark-color-focused));
+        color: var(--dark-text-color);
+      }
+
       .group.light .group__input:focus + .group__label {
         color: var(--input-focus-color,  var(--light-color-focused));
+      }
+
+      .group.dark .group__input:focus + .group__label {
+        color: var(--input-focus-color,  var(--dark-color-focused));
       }
   `];
 
