@@ -146,6 +146,9 @@ Tendremos además una variable de configuración.
  }
 ```
 
+## Storybook
+Se han creado dos modos, ambientes de visualización para el input.
+
 https://www.youtube.com/watch?v=yViIPm2eNnA&t=1276s&ab_channel=QwertyPy
 https://moderncss.dev/custom-css-styles-for-form-inputs-and-textareas/
 
